@@ -28,12 +28,20 @@
                     margin-bottom: 0.5rem;
                 }
                 #cart-header div {
-                    text-align: left;
                     font-weight: bold;
                     color: #3498db;
                 }
-                #cart-header div:last-child {
+                #cart-header div:first-child {
                     width: 100px;
+                }
+                #cart-header div:nth-child(2) {
+                    width: 390px;
+                    text-align: right;
+                }
+                #totalPrice {
+                    margin-left: auto;
+                    width: 120px;
+                    text-align: right;
                 }
         body {
             font-family: Arial, sans-serif;
@@ -82,6 +90,8 @@
             box-shadow: 0 4px 16px rgba(52,152,219,0.12);
         }
         #cart-section h3 {
+            width: 100px;
+            text-align: left;
             margin: 0 0 0.5rem 0;
             color: #3498db;
         }
@@ -110,7 +120,7 @@
         <div id="cart-header">
             <div>Producto</div>
             <div>Precio</div>
-            <div></div>
+            <div id="totalPrice">Total:</div>
         </div>
         <section id="cart-section"></section>
         <h2><button id="goToProducts">Volver a la Tienda</button></h2>

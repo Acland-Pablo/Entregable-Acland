@@ -38,7 +38,7 @@ localStorage.setItem("productos", JSON.stringify(productos))
 
 // Definir contenedor de productos y carrito
 const productsContainer = document.getElementById("productsContainer");
-let cartProducts = [];
+let cartProducts = localStorage.getItem("cartProducts") ? JSON.parse(localStorage.getItem("cartProducts")) : [];
 let productList = localStorage.getItem("productos")
 
 
@@ -70,7 +70,7 @@ function agregarAlCarrito () {
 }
 
 // Función para filtrar productos por nombre y renderizar solo el resultado
-function filtrarYMostrarProducto(productList, nombreBuscado) {
+function filtrarMostrarProducto(productList, nombreBuscado) {
 	// Limpiar el contenedor de productos
 	productsContainer.innerHTML = "";
 	const nombreBuscadoLower = nombreBuscado.trim().toLowerCase();
@@ -94,6 +94,6 @@ function filtrarYMostrarProducto(productList, nombreBuscado) {
 	// Evento para buscar producto
 	document.getElementById('searchButton').onclick = function() {
 		const nombreBuscado = document.getElementById('search').value;
-		filtrarYMostrarProducto(productos, nombreBuscado);
+		filtrarMostrarProducto(productos, nombreBuscado);
 	};
 	

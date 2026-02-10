@@ -15,6 +15,9 @@ function renderCarrito(cartItems) {
         cartSection.appendChild(card);
     });
 
+    const totalPriceElement = document.getElementById("totalPrice");
+    const totalPrice = cartItems.reduce((total, producto) => total + producto.precio, 0);
+    totalPriceElement.textContent = `Total: $${totalPrice}`;
 
     const eliminarBtns = document.querySelectorAll(".eliminar");
     eliminarBtns.forEach(btn => {
