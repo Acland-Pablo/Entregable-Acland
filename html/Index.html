@@ -3,22 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documento Base</title>
-    <script defer src="../js/Index.js" ></script>
+    <title>Onboarding Usuario</title>
+    <script defer src="../js/onboarding.js" ></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .onboarding-container {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .onboarding-container h2 {
+            margin-bottom: 1rem;
+        }
+        .onboarding-container input {
+            padding: 0.5rem;
+            width: 80%;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .onboarding-container button {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .onboarding-container .welcome {
+            margin-top: 1rem;
+            color: #2ecc71;
+        }
+    </style>
 </head>
 <body>
-    <div id="user"></div>
-
-    <input type="text" id="search">
-    <button id="searchButton">Buscar</button>
-    <div id="productsContainer"></div>
-
-    <h1>Entregable de Pablo Acland</h1>
-    <p>Este sitio permite al usuario ingresar su nombre,
-         ver una lista de productos disponibles y
-          seleccionar uno para confirmar su compra mediante ventanas emergentes.</p>
-
-
-    
+    <div class="onboarding-container">
+        <h2>Bienvenido a la plataforma</h2>
+        <p>Por favor, ingresa tu nombre de usuario para comenzar:</p>
+        <input type="text" id="usuarioInput" placeholder="Nombre de usuario">
+        <br>
+        <button id="buttonUser">Ingresar</button>
+        <div class="welcome" id="welcomeMsg"></div>
+    </div>
 </body>
 </html>

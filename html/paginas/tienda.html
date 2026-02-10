@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <script defer src="../../js/tienda.js" ></script>
+    <style>
+                #productsContainer {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                    gap: 1.5rem;
+                    margin-top: 1.5rem;
+                }
+                #productsContainer .product-card {
+                    background: #ecf0f1;
+                    border-radius: 10px;
+                    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+                    padding: 1.2rem 1rem 1rem 1rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    transition: transform 0.15s;
+                }
+                #productsContainer .product-card:hover {
+                    transform: translateY(-4px) scale(1.03);
+                    box-shadow: 0 4px 16px rgba(52,152,219,0.12);
+                }
+                #productsContainer h3 {
+                    margin: 0 0 0.5rem 0;
+                    color: #3498db;
+                }
+                #productsContainer h4 {
+                    margin: 0 0 1rem 0;
+                    color: #2d3436;
+                }
+                #productsContainer .productoAgregar {
+                    background: #3498db;
+                    color: #fff;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 0.5rem 1.2rem;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                }
+                #productsContainer .productoAgregar:hover {
+                    background: #217dbb;
+                }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            min-height: 100vh;
+        }
+        #user {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            background: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-weight: bold;
+            color: #3498db;
+        }
+        .container {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin: 60px auto 0 auto;
+            max-width: 500px;
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 0.5rem;
+            width: 80%;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        h1, h2 {
+            color: #3498db;
+        }
+        #productsContainer > div {
+            background: #ecf0f1;
+            margin: 0.5rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="user"></div>
+    <div class="container">
+        <input type="text" id="search" placeholder="Buscar producto">
+        <button id="searchButton">Buscar</button>
+        <div id="productsContainer"></div>
+        <h2><button id="goToCart">Ir al Carrito</button></h2>
+        <h1>Entregable de Pablo Acland</h1>
+        <p>Este sitio permite al usuario ingresar su nombre, ver una lista de productos disponibles y seleccionar uno para confirmar su compra mediante ventanas emergentes.</p>
+    </div>
+</body>
+</html>

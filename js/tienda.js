@@ -1,45 +1,46 @@
-
 // Declaración de variables, constantes y arrays
 
 let productos = [
 	{
 		id: 1, 
-		nombre:"Buzo"
+		nombre:"Buzo",
+		precio: 5000
 	}, 
 	{
 		id: 2, 
-		nombre:"Pantalones"
+		nombre:"Pantalones",
+		precio: 7000
 
 	},
 	{
 		id: 3,
-		nombre:"Camisa"
+		nombre:"Camisa",
+		precio: 6000
 	}, 
 	{
 		id: 4,
-		nombre:"Shorts"
-
+		nombre:"Shorts",
+		precio: 4000
 	}, 
 	{
 		id: 5,
-		nombre:"Zapatillas"
+		nombre:"Zapatillas",
+		precio: 8000
 	},
 	{ 
 		id: 6,
-		nombre:"Gorra"
+		nombre:"Gorra",
+		precio: 3000
 	}
 ];
+
+localStorage.setItem("productos", JSON.stringify(productos))
 // Definir contenedor de productos y carrito
 const productsContainer = document.getElementById("productsContainer");
 let cartProducts = [];
+let productList = localStorage.getItem("productos")
 
-// Función para ingresar el nombre del usuario
-function ingresarUsuario() {
 
-	let nomFuntion = prompt("Por favor, ingresa tu nombre para continuar:");
-	document.getElementById("user").textContent = nomFuntion;
-	return nomFuntion;
-}
 
 // Función para mostrar productos disponibles
 /*function mostrarProductos() {
@@ -52,6 +53,7 @@ function ingresarUsuario() {
 }*/
 
 function renderProductos (productsArray) {
+	
     productsArray.forEach(producto => {
         const card = document.createElement("div")
         card.innerHTML = `<h3>${producto.nombre}</h3>
@@ -79,6 +81,17 @@ function agregarAlCarrito () {
 	return idProducto
 }
 
+// Función para filtrar productos por nombre y renderizar solo el resultado
+function filtrarYMostrarProducto(productList, nombreBuscado) {
+	// Limpiar el contenedor de productos
+	productsContainer.innerHTML = "";
+	const nombreBuscadoLower = nombreBuscado.trim().toLowerCase();
+	const productosFiltrados = productList.filter(producto =>
+		producto.nombre.toLowerCase().includes(nombreBuscadoLower)
+	);
+	renderProductos(productosFiltrados);
+}
+
 // Función para confirmar la compra
 /*function confirmarCompra(numeroProductoSelecionado) {
 
@@ -101,7 +114,18 @@ function agregarAlCarrito () {
 
 // Seccion principal de interacción
 
-	let nom = ingresarUsuario();
-	let seguir = true;
-	let numeroProductoSelecionado = parseInt(renderProductos (productos));
+	let nom = localStorage.getItem("user");
+	document.getElementById('user').textContent = nom;
+	document.getElementById('goToCart').onclick = function() {
+    window.location.href = './carrito.html';
+	};
+
+	// Renderizar todos los productos al inicio
+	renderProductos(productos);
+
+	// Evento para buscar producto
+	document.getElementById('searchButton').onclick = function() {
+		const nombreBuscado = document.getElementById('search').value;
+		filtrarYMostrarProducto(productos, nombreBuscado);
+	};
 	
