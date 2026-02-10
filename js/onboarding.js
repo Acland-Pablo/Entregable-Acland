@@ -1,7 +1,4 @@
 // Función para ingresar el nombre del usuario
-
-
-
 let buttonUser = document.getElementById("buttonUser").onclick = () => {
         let nomFuntion = document.getElementById("usuarioInput").value;
         console.log(nomFuntion)

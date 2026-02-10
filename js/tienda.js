@@ -35,6 +35,7 @@ let productos = [
 ];
 
 localStorage.setItem("productos", JSON.stringify(productos))
+
 // Definir contenedor de productos y carrito
 const productsContainer = document.getElementById("productsContainer");
 let cartProducts = [];
@@ -43,15 +44,6 @@ let productList = localStorage.getItem("productos")
 
 
 // Función para mostrar productos disponibles
-/*function mostrarProductos() {
-	console.log("Productos disponibles:");
-	for (let i = 1; i <= productos.length; i++) {
-		console.log(i + ". " + productos[i - 1].nombre);
-	}
-	let numeroProducto = prompt("Elige el número del producto que deseas (1-" + productos.length + "):");
-	return numeroProducto;
-}*/
-
 function renderProductos (productsArray) {
 	
     productsArray.forEach(producto => {
@@ -61,24 +53,20 @@ function renderProductos (productsArray) {
                           <button class="productoAgregar" id="${producto.id}">Agregar</button>`
         productsContainer.appendChild(card)
     })
-    let	idProducto = agregarAlCarrito()
-	return idProducto
+    agregarAlCarrito()
 }
 
 // Función para agregar productos al carrito
 function agregarAlCarrito () {
-	let idProducto = 0
     addButton = document.querySelectorAll(".productoAgregar")
     addButton.forEach(button => {
         button.onclick = (e) => {
             const productId = e.currentTarget.id
             const selectedProduct = productos.find(producto => producto.id == productId)
             cartProducts.push(selectedProduct)
-			idProducto= selectedProduct.id
             localStorage.setItem("cartProducts", JSON.stringify(cartProducts) )
         }
     })
-	return idProducto
 }
 
 // Función para filtrar productos por nombre y renderizar solo el resultado
@@ -91,26 +79,6 @@ function filtrarYMostrarProducto(productList, nombreBuscado) {
 	);
 	renderProductos(productosFiltrados);
 }
-
-// Función para confirmar la compra
-/*function confirmarCompra(numeroProductoSelecionado) {
-
-	if (numeroProductoSelecionado >= 1 && numeroProductoSelecionado <= productos.length) {
-			let confirmacion = confirm("¿Seguro que quieres llevar " + productos[numeroProductoSelecionado - 1].nombre + "?");
-			if (confirmacion) {
-				alert("¡Has seleccionado " + productos[numeroProductoSelecionado - 1].nombre + ".");
-				console.log("Usuario: " + nom + ", compró: " + productos[numeroProductoSelecionado - 1].nombre);
-				return seguir = false;
-			} else {
-				alert("No se realizó la compra. Puedes elegir otro producto.");
-				return seguir = true;
-			}
-		} else {
-			alert("Opción incorrecta. Vuelve a intentarlo.");
-			intentos++;
-			return seguir = true;
-		}
-}*/
 
 // Seccion principal de interacción
 
