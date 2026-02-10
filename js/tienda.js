@@ -97,3 +97,7 @@ function filtrarMostrarProducto(productList, nombreBuscado) {
 		filtrarMostrarProducto(productos, nombreBuscado);
 	};
 	
+	document.getElementById('logoutButton').onclick = function() {
+		localStorage.removeItem("user");
+		window.location.href = '../Index.html';
+	};
