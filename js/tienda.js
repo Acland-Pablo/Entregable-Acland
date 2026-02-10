@@ -34,12 +34,22 @@ let productos = [
 	}
 ];
 
-localStorage.setItem("productos", JSON.stringify(productos))
+let auxProducto = localStorage.getItem("productos")
+if (!auxProducto) {
+	localStorage.setItem("productos", JSON.stringify(productos))
+}else if(auxProducto.length < 7) {
+	productos = JSON.parse(auxProducto)
+	productos.push(...JSON.parse(localStorage.getItem("productos")))
+	localStorage.setItem("productos", JSON.stringify(productos))
+}else {
+	productos = JSON.parse(auxProducto)
+}
+
 
 // Definir contenedor de productos y carrito
 const productsContainer = document.getElementById("productsContainer");
 let cartProducts = localStorage.getItem("cartProducts") ? JSON.parse(localStorage.getItem("cartProducts")) : [];
-let productList = localStorage.getItem("productos")
+//let productList = localStorage.getItem("productos")
 
 
 
