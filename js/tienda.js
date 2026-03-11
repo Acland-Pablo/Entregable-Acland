@@ -5,6 +5,7 @@ let productos = [
 		id: 1, 
 		nombre:"Buzo",
 		precio: 5000
+
 	}, 
 	{
 		id: 2, 
