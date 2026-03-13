@@ -1,8 +1,8 @@
 [
   { "id": 1, "nombre": "Buzo", "precio": 5000, "imagen": "../assets/buzo.webp" },
-  { "id": 2, "nombre": "Pantalones", "precio": 7000, "imagen": "https://via.placeholder.com/150" },
-  { "id": 3, "nombre": "Camisa", "precio": 6000, "imagen": "https://via.placeholder.com/150" },
-  { "id": 4, "nombre": "Shorts", "precio": 4000, "imagen": "https://via.placeholder.com/150" },
-  { "id": 5, "nombre": "Zapatillas", "precio": 8000, "imagen": "https://via.placeholder.com/150" },
-  { "id": 6, "nombre": "Gorra", "precio": 3000, "imagen": "https://via.placeholder.com/150" }
+  { "id": 2, "nombre": "Pantalones", "precio": 7000, "imagen": "../assets/pantalones.webp"  },
+  { "id": 3, "nombre": "Camisa", "precio": 6000, "imagen": "../assets/camisa.webp"  },
+  { "id": 4, "nombre": "Shorts", "precio": 4000, "imagen": "../assets/short.webp"  },
+  { "id": 5, "nombre": "Zapatillas", "precio": 8000, "imagen": "../assets/zapatillas.jpg"  },
+  { "id": 6, "nombre": "Gorra", "precio": 3000, "imagen": "../assets/gorra.png"  }
 ]

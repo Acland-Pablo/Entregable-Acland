@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Incluye SweetAlert2 desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JS -->
     <script defer src="../../js/carrito.js"></script>
     <title>Carrito</title>
@@ -10,14 +12,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>CARRITO</h1>
+        <div class="carrito-header">
+            <button id="goToProducts" class="carrito-btn-volver">Volver a la Tienda</button>
+            <h1 class="carrito-titulo">CARRITO</h1>
+            <button id="vaciarCarrito" class="carrito-btn-vaciar">Vaciar Carrito</button>
+        </div>
+        <div id="totalPrice">Total:</div>
+        <button id="buy">Comprar</button>
         <div id="cart-header">
             <div>Producto</div>
+            <div>Cantidad</div>
             <div>Precio</div>
-            <div id="totalPrice">Total:</div>
+            
+            
         </div>
+        
         <section id="cart-section"></section>
-        <h2><button id="goToProducts">Volver a la Tienda</button></h2>
     </div>
 </body>
 </html>

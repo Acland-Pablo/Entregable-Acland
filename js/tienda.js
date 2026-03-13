@@ -18,7 +18,7 @@ fetch('../Json/productos.json')
 
 // Definir contenedor de productos y carrito
 const productsContainer = document.getElementById("productsContainer");
-let cartProducts = localStorage.getItem("cartProducts") ? JSON.parse(localStorage.getItem("cartProducts")) : [];
+let cartProducts = localStorage.getItem("productos") ? JSON.parse(localStorage.getItem("productos")) : [];
 
 
 
@@ -39,16 +39,26 @@ function renderProductos (productsArray) {
 
 // Función para agregar productos al carrito
 function agregarAlCarrito () {
-    addButton = document.querySelectorAll(".productoAgregar")
-    addButton.forEach(button => {
-        button.onclick = (e) => {
-            const productId = e.currentTarget.id
-            const selectedProduct = productos.find(producto => producto.id == productId)
-            cartProducts.push(selectedProduct)
-			let nom = localStorage.getItem("user");
-            localStorage.setItem(nom, JSON.stringify(cartProducts) )
-        }
-    })
+	addButton = document.querySelectorAll(".productoAgregar")
+	addButton.forEach(button => {
+		button.onclick = (e) => {
+			const productId = e.currentTarget.id
+			const selectedProduct = productos.find(producto => producto.id == productId)
+			// Verificar si el producto ya está en el carrito
+			if(cartProducts.some(producto => producto.id == selectedProduct.id)) {
+				let index = cartProducts.findIndex(producto => producto.id == selectedProduct.id);
+				cartProducts[index].cantidad += 1;
+			} else {
+				cartProducts.push({ ...selectedProduct, cantidad: 1 });
+			}
+			localStorage.setItem("productos", JSON.stringify(cartProducts) )
+			// Animación visual
+			button.classList.add('active');
+			setTimeout(() => {
+				button.classList.remove('active');
+			}, 300);
+		}
+	})
 }
 
 // Función para filtrar productos por nombre y renderizar solo el resultado
@@ -64,8 +74,7 @@ function filtrarMostrarProducto(productList, nombreBuscado) {
 
 // Seccion principal de interacción
 
-	let nom = localStorage.getItem("user");
-	document.getElementById('user').textContent = nom;
+	
 	document.getElementById('goToCart').onclick = function() {
     window.location.href = './carrito.html';
 	};
@@ -80,6 +89,5 @@ function filtrarMostrarProducto(productList, nombreBuscado) {
 	};
 	
 	document.getElementById('logoutButton').onclick = function() {
-		localStorage.removeItem("user");
 		window.location.href = '../Index.html';
 	};

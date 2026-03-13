@@ -1,8 +1,40 @@
+.saludo {
+    background: transparent;
+    color: rgba(0,0,0,0.7);
+}
+/* Estilos específicos para carrito.html */
+.carrito-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+.carrito-titulo {
+    margin: 0 auto;
+    flex: 1;
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: 0.1em;
+}
+.carrito-btn-volver {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+}
+.carrito-btn-vaciar {
+    margin-left: auto;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 1rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
 /* Estilos globales para todas las páginas */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    background: #f5f6fa;
+    background-color: #3498db;
+    background: #3498db;
     margin: 0;
     min-height: 100vh;
 }
@@ -12,8 +44,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
+    background-image: url('./assets/fondo.jpg');
+    background-size: cover;
+    background-position: center;
 }
 .main-content > p {
     text-align: center;
@@ -182,7 +216,14 @@ footer {
     padding: 0.5rem 1.2rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.15s;
+}
+
+#productsContainer .productoAgregar.active {
+    transform: scale(1.15);
+    background: #2ecc71;
+    box-shadow: 0 0 8px #2ecc71;
+    transition: transform 0.15s, background 0.2s;
 }
 #productsContainer .productoAgregar:hover {
     background: #217dbb;
@@ -251,6 +292,59 @@ h1, h2 {
 }
 
 /* carrito.html */
+
+.cantidad-container {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    margin-bottom: 0.5rem;
+    width: 40px;
+    height: 5px;
+    margin-top: -0.5rem;
+    padding-bottom: 5px;
+    font-size: 0.65rem;
+}
+.cantidad-container .cantidad,
+.cantidad-container .cantidad-button-minus,
+.cantidad-container .cantidad-button-plus {
+    font-size: 0.65rem;
+    padding: 0.08rem 0.25rem;
+}
+.cantidad {
+    font-size: 1rem;
+    color: #2d3436;
+    margin: 0.05rem 0;
+    width: 50%;
+    text-align: center;
+}
+.cantidad-button-minus {
+    background: #bdc3c7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    margin-right: 0.02rem;
+}
+.cantidad-button-plus {
+    background: #bdc3c7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    margin-right: 0.02rem;
+}
+#buy {
+    background: #34db3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.7rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
 #goToProducts {
     background: #3498db;
     color: #fff;
@@ -267,25 +361,31 @@ h1, h2 {
 #cart-header {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 95%;
     margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 #cart-header div {
+    
     font-weight: bold;
     color: #3498db;
 }
 #cart-header div:first-child {
-    width: 100px;
+    width: 200px;
 }
 #cart-header div:nth-child(2) {
-    width: 390px;
-    text-align: right;
+    width: 100px;
+    text-align: center;
+}
+#cart-header div:nth-child(3) {
+    width: 150px;
+    text-align: center;
+    margin-right: 100px;
 }
 #totalPrice {
     margin-left: auto;
     width: 120px;
-    text-align: right;
+    text-align: center;
 }
 #cart-section {
     display: grid;
@@ -303,7 +403,7 @@ h1, h2 {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 95%;
     transition: transform 0.15s;
 }
 #cart-section .cart-info {
@@ -316,7 +416,7 @@ h1, h2 {
     box-shadow: 0 4px 16px rgba(52,152,219,0.12);
 }
 #cart-section h3 {
-    width: 100px;
+    width: 50px;
     text-align: left;
     margin: 0 0 0.5rem 0;
     color: #3498db;
@@ -330,6 +430,7 @@ h1, h2 {
     color: #fff;
     border: none;
     border-radius: 6px;
+    margin-left: 60px;
     padding: 0.5rem 1.2rem;
     font-size: 1rem;
     cursor: pointer;
