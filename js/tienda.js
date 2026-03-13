@@ -1,56 +1,24 @@
 // Declaración de variables, constantes y arrays
 
-let productos = [
-	{
-		id: 1, 
-		nombre:"Buzo",
-		precio: 5000
+let productos = [];
 
-	}, 
-	{
-		id: 2, 
-		nombre:"Pantalones",
-		precio: 7000
-
-	},
-	{
-		id: 3,
-		nombre:"Camisa",
-		precio: 6000
-	}, 
-	{
-		id: 4,
-		nombre:"Shorts",
-		precio: 4000
-	}, 
-	{
-		id: 5,
-		nombre:"Zapatillas",
-		precio: 8000
-	},
-	{ 
-		id: 6,
-		nombre:"Gorra",
-		precio: 3000
-	}
-];
-
-let auxProducto = localStorage.getItem("productos")
-if (!auxProducto) {
-	localStorage.setItem("productos", JSON.stringify(productos))
-}else if(auxProducto.length < 7) {
-	productos = JSON.parse(auxProducto)
-	productos.push(...JSON.parse(localStorage.getItem("productos")))
-	localStorage.setItem("productos", JSON.stringify(productos))
-}else {
-	productos = JSON.parse(auxProducto)
-}
+// Cargar productos desde productos.json
+fetch('../Json/productos.json')
+  .then(response => response.json())
+  .then(data => {
+	productos = data;
+	renderProductos(productos);
+	// Evento para buscar producto
+	document.getElementById('searchButton').onclick = function() {
+	  const nombreBuscado = document.getElementById('search').value;
+	  filtrarMostrarProducto(productos, nombreBuscado);
+	};
+  });
 
 
 // Definir contenedor de productos y carrito
 const productsContainer = document.getElementById("productsContainer");
 let cartProducts = localStorage.getItem("cartProducts") ? JSON.parse(localStorage.getItem("cartProducts")) : [];
-//let productList = localStorage.getItem("productos")
 
 
 
@@ -59,9 +27,11 @@ function renderProductos (productsArray) {
 	
     productsArray.forEach(producto => {
         const card = document.createElement("div")
-        card.innerHTML = `<h3>${producto.nombre}</h3>
-                          <h4>$${producto.precio}</h4>
-                          <button class="productoAgregar" id="${producto.id}">Agregar</button>`
+        card.innerHTML = `
+						<img src="${producto.imagen}" alt="${producto.nombre}" style="width:120px; height:auto; border-radius:8px; margin-bottom:8px;">
+  						<h3>${producto.nombre}</h3>
+  						<h4>$${producto.precio}</h4>
+  						<button class="productoAgregar" id="${producto.id}">Agregar</button>`
         productsContainer.appendChild(card)
     })
     agregarAlCarrito()
@@ -75,7 +45,8 @@ function agregarAlCarrito () {
             const productId = e.currentTarget.id
             const selectedProduct = productos.find(producto => producto.id == productId)
             cartProducts.push(selectedProduct)
-            localStorage.setItem("cartProducts", JSON.stringify(cartProducts) )
+			let nom = localStorage.getItem("user");
+            localStorage.setItem(nom, JSON.stringify(cartProducts) )
         }
     })
 }

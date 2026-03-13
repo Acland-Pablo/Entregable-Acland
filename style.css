@@ -189,14 +189,16 @@ footer {
 }
 #user {
     display: inline-flex;
-    top: 20px;
-    right: 4px;
+    position: absolute;
+    top: 24px;
+    right: 32px;
     background: #fff;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     font-weight: bold;
     color: #3498db;
+    z-index: 10;
 }
 .container {
     background: #fff;
@@ -213,6 +215,19 @@ input[type="text"] {
     margin-bottom: 1rem;
     border-radius: 6px;
     border: 1px solid #ccc;
+}
+#logoutButton {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    background: #fbfcfd;
+    font-weight: bold;
+    color: #3498db;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    float: left;
+    margin-right: 1.5rem;
 }
 button {
     padding: 0.5rem 1.5rem;
