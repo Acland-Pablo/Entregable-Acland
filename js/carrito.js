@@ -5,7 +5,13 @@ try {
     let cartStorage = localStorage.getItem("productos") ? localStorage.getItem("productos") : "[]";
     cartProducts = JSON.parse(cartStorage);
 } catch (error) {
-    console.error("Error accediendo a localStorage:", error);
+    if (typeof Swal !== 'undefined') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error de almacenamiento',
+            text: 'Hubo un problema accediendo a tus datos. Intenta recargar la página.'
+        });
+    }
     cartProducts = [];
 }
 
@@ -53,7 +59,13 @@ function renderCarrito(cartItems) {
                         localStorage.setItem("productos", JSON.stringify(cartProducts));
                         renderCarrito(cartProducts);
                     } catch (error) {
-                        console.error("Error eliminando producto del carrito:", error);
+                        if (typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error al eliminar',
+                                text: 'No se pudo eliminar el producto. Intenta nuevamente.'
+                            });
+                        }
                     }
                 }
             };
