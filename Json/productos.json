@@ -4,5 +4,11 @@
   { "id": 3, "nombre": "Camisa", "precio": 6000, "imagen": "../assets/camisa.webp"  },
   { "id": 4, "nombre": "Shorts", "precio": 4000, "imagen": "../assets/short.webp"  },
   { "id": 5, "nombre": "Zapatillas", "precio": 8000, "imagen": "../assets/zapatillas.jpg"  },
-  { "id": 6, "nombre": "Gorra", "precio": 3000, "imagen": "../assets/gorra.png"  }
+  { "id": 6, "nombre": "Gorra", "precio": 3000, "imagen": "../assets/gorra.png"  },
+  { "id": 7, "nombre": "Campera", "precio": 9000, "imagen": "../assets/campera.jpg"  },
+  { "id": 8, "nombre": "Medias", "precio": 10000, "imagen": "../assets/medias.jpg"  },
+  { "id": 9, "nombre": "Cinturón", "precio": 3500, "imagen": "../assets/cinturon.webp"  },
+  { "id": 10, "nombre": "Bufanda", "precio": 4500, "imagen": "../assets/bufanda.jpg"  },
+  { "id": 11, "nombre": "Guantes", "precio": 2500, "imagen": "../assets/guantes.jpg"  },
+  { "id": 12, "nombre": "Vermudas", "precio": 15000, "imagen": "../assets/vermudas.jpg"  }
 ]

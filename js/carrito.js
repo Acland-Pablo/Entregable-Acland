@@ -1,8 +1,7 @@
-let nom = "";
 let cartProducts = [];
 let cartSection = document.getElementById("cart-section");
+// Cargar productos del carrito desde localStorage
 try {
-    nom = localStorage.getItem("user") || "";
     let cartStorage = localStorage.getItem("productos") ? localStorage.getItem("productos") : "[]";
     cartProducts = JSON.parse(cartStorage);
 } catch (error) {
@@ -10,6 +9,7 @@ try {
     cartProducts = [];
 }
 
+// Función para renderizar productos en el carrito
 function renderCarrito(cartItems) {
     cartSection.innerHTML = "";
     cartItems.forEach((producto, index) => {
@@ -23,17 +23,19 @@ function renderCarrito(cartItems) {
             <h4 class="cantidad">${producto.cantidad}</h4>
             <button class="cantidad-button-plus" data-index="${index}">+</button>
             </div>
-            <h4>$${producto.precio}</h4>
+            <h4>$${producto.precio * producto.cantidad}</h4>
             <button class="eliminar" data-index="${index}">Eliminar</button>
         `;
         cartSection.appendChild(card);
     });
 
 
+    // Actualizar total del carrito
     const totalPriceElement = document.getElementById("totalPrice");
-    const totalPrice = cartItems.reduce((total, producto) => total + producto.precio, 0);
+    const totalPrice = cartItems.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
     totalPriceElement.textContent = `Total: $${totalPrice}`;
 
+    // Agregar eventos a botones de eliminar y cantidad
         const eliminarBtns = document.querySelectorAll(".eliminar");
         eliminarBtns.forEach(btn => {
             btn.onclick = function() {
@@ -82,6 +84,7 @@ cantidadButtonsPlus.forEach(btn => {
     };
 });
 }
+// Función para vaciar el carrito
 function vaciarCarrito() {
     cartProducts = [];
     localStorage.setItem("productos", JSON.stringify(cartProducts));
@@ -91,10 +94,12 @@ function vaciarCarrito() {
 
 renderCarrito(cartProducts);
 
+// Eventos para boton ir a tienda
 document.getElementById("goToProducts").onclick = function() {
     window.location.href = "tienda.html";
 };
 
+// Evento para vaciar carrito
 document.getElementById("vaciarCarrito").onclick = function() {
     if (cartProducts.length === 0) {
         Swal.fire({
@@ -107,6 +112,7 @@ document.getElementById("vaciarCarrito").onclick = function() {
     }
 };
 
+// Evento para finalizar compra
 document.getElementById("buy").onclick = function() {
     if (cartProducts.length !== 0) {
         Swal.fire({

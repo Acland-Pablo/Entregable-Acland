@@ -20,7 +20,23 @@ fetch('../Json/productos.json')
 const productsContainer = document.getElementById("productsContainer");
 let cartProducts = localStorage.getItem("productos") ? JSON.parse(localStorage.getItem("productos")) : [];
 
+// Eventos para acceder al carrito
+document.getElementById('goToCart').onclick = function() {
+window.location.href = './carrito.html';
+};
 
+// Renderizar todos los productos al inicio
+renderProductos(productos);
+
+// Evento para buscar producto
+document.getElementById('searchButton').onclick = function() {
+	const nombreBuscado = document.getElementById('search').value;
+	filtrarMostrarProducto(productos, nombreBuscado);
+};
+// Evento para salir de la tienda
+document.getElementById('logoutButton').onclick = function() {
+	window.location.href = '../Index.html';
+};
 
 // Función para mostrar productos disponibles
 function renderProductos (productsArray) {
@@ -75,19 +91,3 @@ function filtrarMostrarProducto(productList, nombreBuscado) {
 // Seccion principal de interacción
 
 	
-	document.getElementById('goToCart').onclick = function() {
-    window.location.href = './carrito.html';
-	};
-
-	// Renderizar todos los productos al inicio
-	renderProductos(productos);
-
-	// Evento para buscar producto
-	document.getElementById('searchButton').onclick = function() {
-		const nombreBuscado = document.getElementById('search').value;
-		filtrarMostrarProducto(productos, nombreBuscado);
-	};
-	
-	document.getElementById('logoutButton').onclick = function() {
-		window.location.href = '../Index.html';
-	};
