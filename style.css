@@ -293,6 +293,17 @@ h1, h2 {
 
 /* carrito.html */
 
+.no-products {
+    color: #ac2c1e;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+}
 .cantidad-container {
     display: flex;
     align-items: center;

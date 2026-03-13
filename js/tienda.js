@@ -2,6 +2,7 @@
 
 let productos = [];
 
+
 // Cargar productos desde productos.json
 fetch('../Json/productos.json')
 	.then(response => response.json())
@@ -48,12 +49,6 @@ window.location.href = './carrito.html';
 
 // Renderizar todos los productos al inicio
 renderProductos(productos);
-
-// Evento para buscar producto
-document.getElementById('searchButton').onclick = function() {
-	const nombreBuscado = document.getElementById('search').value;
-	filtrarMostrarProducto(productos, nombreBuscado);
-};
 // Evento para salir de la tienda
 document.getElementById('logoutButton').onclick = function() {
 	window.location.href = '../Index.html';
@@ -116,7 +111,13 @@ function filtrarMostrarProducto(productList, nombreBuscado) {
 	const productosFiltrados = productList.filter(producto =>
 		producto.nombre.toLowerCase().includes(nombreBuscadoLower)
 	);
+	if (productosFiltrados.length === 0) {
+		  const card = document.createElement("div")
+        card.innerHTML = `
+						<h3 class="no-products">No se encontraron productos con ese nombre.</h3>`
+        productsContainer.appendChild(card)
+}else {
 	renderProductos(productosFiltrados);
 }
-
+}
 	
